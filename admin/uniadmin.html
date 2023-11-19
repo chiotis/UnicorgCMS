@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<base href="">
+
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta content="index, follow" name="robots" />
+
+	<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.10/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.17.10/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.17.10/dist/js/uikit-icons.min.js"></script>
+	<title>ADMIN</title>
+
+	<link rel="stylesheet" href="https://get.mavo.io/mavo.css"/>
+    <script src="https://get.mavo.io/mavo.js"></script>
+
+</head>
+
+<body 	class="hg" 
+		mv-app="unicorg" 
+		mv-storage="local" 
+		mv-mode="edit" 
+		mv-bar="none"
+		mv-plugins="" 
+		>
+
+<nav class="uk-navbar-container">
+    <div class="uk-container uk-container-expand uk-background-secondary uk-light ">
+        <div uk-navbar>
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">UnicorgCMS</a>
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#">
+                            <span class="uk-icon uk-margin-small-right" uk-icon="icon: link"></span>
+                            View Website
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+            	<div class="uk-navbar-item">
+                    <button class="uk-button uk-button-primary mv-save">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class='uk-grid-collapse' uk-grid uk-height-match>
+	<div class="uk-section uk-section-primary uk-light uk-padding uk-width-1-5@s" >
+		<ul class="uk-nav-default uk-nav-divider" uk-nav uk-sticky>
+			<li><a href="#Homepage" uk-scroll>Homepage</a></li>
+			<li><a href="#About" uk-scroll>About</a></li>
+			<li><a href="#Services" uk-scroll>Services</a></li>
+			<li><a href="#Contact" uk-scroll>Contact</a></li>
+			<li><a href="#Projects" uk-scroll>Projects</a></li>
+			<li><a href="#Posts" uk-scroll>Posts</a></li>
+		</ul>
+	</div>
+	<div class="uk-section uk-padding uk-width-4-5@s" >
+		<section id="Homepage">
+			<h2 class="uk-heading-divider">Homepage</h2>
+		</section>
+
+		<section id="About" class="uk-margin-medium-bottom">
+			<h2 class="uk-heading-divider">About</h2>
+
+			<form>
+				<div class="uk-margin">
+            		<label class="uk-form-label" for="form-stacked-text">Main Text</label>
+			    	<textarea class="uk-textarea" property="aboutText"></textarea>
+			    </div>
+			</form>
+
+		</section>
+
+		<section id="Services" class="uk-margin-medium-bottom">
+			<h2 class="uk-heading-divider">Services <button class="uk-button uk-button-primary uk-button-small mv-add-services">Add New Service</button></h2>
+
+			<ul uk-accordion>
+			    <li mv-list-item="services" mv-item-bar="no-add" class='uk-margin-small uk-padding-small uk-background-secondary uk-light uk-box-shadow-medium uk-box-shadow-hover-large'>
+			        <a class="uk-accordion-title" href>[title]</a>
+			        <div class="uk-accordion-content ">
+			            <form>
+			            	<div class="uk-margin">
+			            		<label class="uk-form-label" for="form-stacked-text">Title</label>
+					            <input class="uk-input" type="text" property="title" aria-label="[title]">
+					        </div>
+					        <div class="uk-margin">
+					        	<label class="uk-form-label" for="form-stacked-text">Description</label>
+						    	<textarea class="uk-textarea" property="description"></textarea>
+						    </div>
+						    <div class="uk-margin">
+			            		<label class="uk-form-label" for="form-stacked-text">Image</label>
+					            <input class="uk-input" type="text" property="serviceImg" aria-label="[title]">
+					        </div>
+						</form>
+			        </div>
+			    </li>
+			</ul>
+
+		</section>
+
+		<section id="Contact">
+			<h2 class="uk-heading-divider">Contact</h2>
+		</section>
+
+		<section id="Projects">
+			<h2 class="uk-heading-divider">Projects</h2>
+		</section>
+
+		<section id="Posts">
+			<h2 class="uk-heading-divider">Posts</h2>
+
+		</section>
+	</div>
+</div>
+
+</body>
+</html>

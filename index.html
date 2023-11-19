@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Frontend</title>
+	<script src="https://get.mavo.io/mavo.js"></script>
+</head>
+<style type="text/css">
+	section {
+		background: #eee;
+		padding: 10px;
+		margin: 10px;
+	}
+</style>
+<body mv-app="unicorg" mv-storage="local" mv-mode="read" mv-bar="none">
+
+	<section property="about">
+		<h2>About</h2>
+		<p>[aboutText]</p>
+	</section>
+
+	<section property="services" mv-list>
+		<h2>Services</h2>
+		<article property="services" mv-list-item mv-order="asc">
+			<h3 property="title" ></h3>
+			<p property="description" ></p>
+			<img src="#" width="300" height="auto" property="serviceImg" alt="[title]" title="[title]">
+		</article>
+	</section>
+
+</body>
+</html>
