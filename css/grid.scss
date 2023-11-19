@@ -1,0 +1,294 @@
+$numColumns: 12;
+$gutterWidth: 20px;
+$maxWidth: 1310px;
+$baseline: 1.0rem;
+$speed: 0.5s;
+$radius: 0px;
+
+// Colors
+$accent: #00a6e8;
+$success: #41b883;
+$danger: #e63946;
+$warning: #d18c00;
+$border: #ddd;
+$lightBg: #f5f5f5;
+$darkBg: #222;
+
+// Some styling from bootstrap reboot
+* { 
+	box-sizing: border-box;
+	transition: filter $speed, 
+				opacity $speed, 
+				color $speed, 
+				background $speed, 
+				visibility $speed, 
+				right $speed, 
+				left $speed, 
+				top $speed, 
+				bottom $speed; 
+}
+*::before,
+*::after {
+	box-sizing: border-box; // 1
+}
+html {
+	line-height: 1.15; // 3
+	-webkit-text-size-adjust: 100%; // 4
+	-ms-text-size-adjust: 100%; // 4
+	-ms-overflow-style: scrollbar; // 5
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 6
+
+	font-size: $baseline;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+	display: block;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	font-size: $baseline;
+	font-family:
+		// Safari for OS X and iOS (San Francisco)
+		-apple-system,
+		// Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
+		system-ui,
+		// Chrome < 56 for OS X (San Francisco)
+		BlinkMacSystemFont,
+		// Windows
+		"Segoe UI",
+		// Android
+		"Roboto",
+		// Basic web fallback
+		"Helvetica Neue", Arial, sans-serif;
+}
+
+[tabindex="-1"]:focus {
+	outline: none !important;
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+
+// Function for Heading sizes
+$start: $baseline*2.2; 
+@each $h in h1, h2, h3, h4, h5, h6{
+	#{$h} { 
+		font-size: $start;
+		margin-top: 0;
+		margin-bottom: $start;
+		line-height: $start + 0.5;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+	$start: $start - 0.3;
+}
+
+p {
+	line-height: $baseline*1.6;
+}
+b,
+strong {
+	font-weight: bolder; 
+}
+small {
+	font-size: $baseline*0.7; 
+}
+abbr[title],
+abbr[data-original-title] {
+	text-decoration: underline;
+	text-decoration: underline dotted;
+	cursor: help;
+	border-bottom: 0;
+}
+address {
+	margin-bottom: $baseline*1.6;
+	font-style: normal;
+	line-height: inherit;
+}
+ol,
+ul,
+dl {
+	margin-top: 0;
+	margin-bottom: $baseline*1.6;
+}
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+	margin-bottom: 0;
+}
+pre {
+	font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+	margin: $baseline 0;
+	overflow: auto;
+	width: auto;
+	padding: $baseline;
+	background-color: #eee;
+	max-height: 600px;
+}
+// Grid system
+.row {
+	display: grid;
+	// Uniform columns. No need for rounded percentages to calculate widths.
+	grid-template-columns: repeat($numColumns, 5fr);
+	// Actual gutter width. No need for negative margin hack.
+	grid-gap: $gutterWidth;
+	margin-bottom: $gutterWidth;
+}
+.row div {
+	// background: #ddd;
+	padding: $gutterWidth;
+}
+// Put a restriction class to the .row to keep it from being fluid.
+.max-width {
+	max-width: $maxWidth;
+	margin-left: auto;
+	margin-right: auto;
+}
+[class^=col-]{
+	//Full width fallback when no column size is define for the screen size.
+	grid-column-end: span $numColumns; 
+}
+
+// NESTED LOOP
+// Check out the compiled css. It is very repetitive, similar to Bootstrap Grid code
+// Loop through responsive breakpoints
+@each $size, $abbr in (0,xs),(481px,sm),(769px,md),(1025px,lg),(1440px,xl){
+	@media (min-width: $size){
+		// Loop through col classes
+		@for $i from 1 through $numColumns{
+			.col-#{$abbr}-#{$i}{
+				grid-column-end: span $i;
+			}
+		}
+	}
+}
+
+/* Navigation */
+nav ul li a {
+	display: block;
+	background: #ccc;
+	text-decoration: none;
+}
+nav ul li a:hover {
+	filter: brightness(110%);
+}
+
+/* Tables */
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+thead {
+	font-weight: 700;
+}
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+tr:nth-child(even){ 
+	background: #f9f9f9;
+}
+tr:hover {
+	background: #eee;
+}
+
+/* MODAL */
+.modal-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(179.19791148719435deg, rgba(88, 221, 245,.8) 26.56882591093118%,rgba(254, 169, 107,.8) 77.17611336032388%,rgba(255, 169, 107,.8) 77.17611336032388%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.modal {
+	width: 50%;
+	background: #fff;
+	padding: 20px;
+	text-align: center;
+	box-shadow: 15px 15px 20px rgba(0,0,0,0.3);
+}
+.modal-container:not(:target) {
+	opacity: 0;
+	visibility: hidden;
+}
+.modal-container:target {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* SLIDE OUT */
+#settings {
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	overflow-y: auto;
+	width: 80%;
+	max-width: 400px;
+	background: #f5f5f5;
+	box-shadow: 0 0 20px #999;
+}
+#settings:not(:target) {
+	right: -100%;
+}
+#settings:target {
+	right: 0;
+}
+#settings:target .closeButton {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #000;
+	color: #fff;
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+// Alert Boxes
+[class^=alert-]{
+	background: #eee;
+	padding: $baseline / 1.2;
+	border: 1px solid;
+	border-radius: $radius;
+}
+.alert-default { 
+	background: $accent; 
+	color: lighten( $accent, 80% );
+	border-color: darken( $accent, 10% );
+	box-shadow: inset 0 1px 0 lighten($accent, 20%);
+}
+.alert-success { 
+	background: $success; 
+	color: lighten( $success, 80% );
+	border-color: darken( $success, 10% );
+	box-shadow: inset 0 1px 0 lighten($success, 20%);
+}
+.alert-danger { 
+	background: $danger; 
+	color: lighten( $danger, 80% );
+	border-color: darken( $danger, 10% );
+	box-shadow: inset 0 1px 0 lighten($danger, 20%);
+}
+.alert-warning { 
+	background: $warning; 
+	color: lighten( $warning, 50% );
+	border-color: darken( $warning, 10% );
+	box-shadow: inset 0 1px 0 lighten($warning, 20%);
+}
+
+// Nice Scroll Fire up
+.niceScroll {
+	overflow: auto;
+}

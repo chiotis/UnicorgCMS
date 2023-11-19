@@ -1,0 +1,79 @@
+.hg__logo {
+	grid-area: logo;
+	background: #ddd;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+.hg__settings {
+	grid-area: settings;
+	background: #ddd;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+.hg__header {
+	grid-area: header;
+	background: #eee;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+.hg__footer {
+	grid-area: footer;
+	background: #ddd;
+	text-align: left;
+}
+.hg__main {
+	grid-area: main;
+}
+.hg__navigation {
+	grid-area: navigation;
+	background: #f5f5f5;
+}
+.hg__sidebar {
+	grid-area: sidebar;
+	background: #f5f5f5;
+}
+
+.hg {
+	display: grid;
+	max-width: 100%;
+	grid-template-areas: 
+		"logo"
+		"header"
+		"navigation"
+		"main"
+		"settings"
+		"sidebar"
+		"footer";
+	grid-template-columns: 100%;
+	grid-template-rows: 
+		60px
+		60px
+		60px
+		1fr
+		60px
+		50px 
+		30px;
+}
+
+@media screen and (min-width: 1025px) {
+	.hg {
+		min-height: 100vh;
+		grid-template-areas: 
+			"logo header settings"
+			"navigation main sidebar"
+			"footer footer footer";
+		grid-template-columns: 200px 1fr 250px;
+		grid-template-rows: 6vh 90vh 4vh;
+	}
+	.hg__main {
+		overflow-y: auto;
+	}
+}
+
+#settings,
+#modal {
+	z-index: 2;
+}
